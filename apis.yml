@@ -1,0 +1,7 @@
+aid: columbia-sportswear
+url: https://raw.githubusercontent.com/api-evangelist/columbia-sportswear/refs/heads/main/apis.yml
+modified: '2026-03-23'
+apis: []
+common:
+  - type: Website
+    url: https://www.columbia-sportswear.com
