@@ -1,7 +1,12 @@
 aid: columbia-sportswear
-url: https://raw.githubusercontent.com/api-evangelist/columbia-sportswear/refs/heads/main/apis.yml
+url: 
+  https://raw.githubusercontent.com/api-evangelist/columbia-sportswear/refs/heads/main/apis.yml
 modified: '2026-03-23'
 apis: []
 common:
   - type: Website
     url: https://www.columbia-sportswear.com
+description: >-
+  Columbia Sportswear is a global designer, marketer, and distributor of outdoor,
+  active, and everyday lifestyle apparel, footwear, accessories, and equipment under
+  the Columbia, Mountain Hardwear, SOREL, and prAna brands.
