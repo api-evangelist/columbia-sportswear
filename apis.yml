@@ -13,7 +13,7 @@ tags:
   - Product Lifecycle
   - Retail
 type: Index
-x-type: company
+kind: company
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
 created: '2025-03-23'
@@ -89,7 +89,7 @@ common:
     url: https://www.prana.com/
   - type: B2B Support (Europe)
     url: https://europe-customers.columbia.com/hc/en-us
-  - type: Privacy Policy
+  - type: PrivacyPolicy
     url: https://www.columbia.com/privacy.html
   - type: Terms of Use
     url: https://www.columbia.com/terms-and-conditions.html
