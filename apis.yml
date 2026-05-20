@@ -71,6 +71,10 @@ apis:
       - Drive store and fulfillment decisions with weather data
       - Enable translation and localization for global commerce
 common:
+  - type: GitHubOrganization
+    url: https://github.com/columbiasportswear
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/columbia-sportswear
   - type: Website
     url: https://www.columbia.com/
   - type: Corporate
