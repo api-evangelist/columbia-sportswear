@@ -1,0 +1,21 @@
+{
+  "repo": "columbia-sportswear",
+  "feeds": [
+    {
+      "source": "https://www.columbia.com/",
+      "feed_url": "https://www.columbia.com/blog",
+      "title": "Columbia Sportswear Blog",
+      "saved": 0,
+      "method": "none"
+    },
+    {
+      "source": "https://www.columbiasportswear.com/",
+      "feed_url": "https://investor.columbia.com/news-releases",
+      "title": "Columbia Sportswear Investor News",
+      "saved": 0,
+      "method": "none"
+    }
+  ],
+  "post_count": 0,
+  "fetched": "2026-06-05T00:00:00Z"
+}

@@ -1,0 +1,143 @@
+vocabulary:
+  name: Columbia Sportswear API Vocabulary
+  description: >-
+    Key domain concepts for Columbia Sportswear's partner-facing digital platform,
+    covering order management, consumer management, product lifecycle, cognitive
+    services, and EDI-based retail integration across its portfolio of outdoor
+    and active lifestyle brands.
+  version: "1.0.0"
+  terms:
+
+    - term: OrderManagement
+      definition: >-
+        The set of APIs enabling retail partners and direct-to-consumer channels
+        to create, retrieve, update, and track orders across B2B wholesale and
+        DTC fulfillment pipelines.
+      tags:
+        - order
+        - fulfillment
+        - b2b
+        - dtc
+
+    - term: SubscriptionKey
+      definition: >-
+        A per-partner authentication credential issued via the Azure API Management
+        developer portal that grants access to one or more Columbia API products.
+        Keys are requested through the self-service portal and approved by Columbia.
+      tags:
+        - authentication
+        - portal
+        - azure-apim
+
+    - term: ProductLifecycleManagement
+      definition: >-
+        APIs and data services governing the creation, classification, enrichment,
+        and publication of product catalog content—including style, colorway, size,
+        material, and marketing copy—across Columbia's brand portfolio.
+      tags:
+        - product
+        - catalog
+        - plm
+        - content
+
+    - term: ConsumerManagement
+      definition: >-
+        Services for managing consumer identity, loyalty programme memberships,
+        purchase history, and preference profiles to enable personalised commerce
+        experiences across Columbia's digital and retail touchpoints.
+      tags:
+        - consumer
+        - loyalty
+        - identity
+        - personalisation
+
+    - term: CognitiveSearch
+      definition: >-
+        AI-powered search and product recommendation APIs that return ranked
+        results and personalised suggestions based on query semantics, consumer
+        behaviour signals, and product attribute data.
+      tags:
+        - cognitive
+        - search
+        - recommendations
+        - ai
+
+    - term: EDI
+      definition: >-
+        Electronic Data Interchange—structured business document exchange
+        (purchase orders 850, advance ship notices 856, invoices 810) used
+        between Columbia and its retail trading partners via providers such as
+        TrueCommerce and eZCom.
+      tags:
+        - edi
+        - trading-partner
+        - b2b
+        - integration
+
+    - term: AzureAPIManagement
+      definition: >-
+        Microsoft's cloud API gateway platform hosting Columbia's partner portal
+        at columbia.portal.azure-api.net, providing product cataloguing,
+        subscription management, try-it consoles, and rate limiting.
+      tags:
+        - azure
+        - apim
+        - portal
+        - gateway
+
+    - term: FulfillmentChannel
+      definition: >-
+        The commerce pathway through which an order is processed—either Business-
+        to-Business (B2B) wholesale shipment to a retailer, or Direct-to-Consumer
+        (DTC) shipment to the end buyer.
+      tags:
+        - fulfillment
+        - b2b
+        - dtc
+        - channel
+
+    - term: Colorway
+      definition: >-
+        A specific colour variant of an apparel or footwear style, identified by
+        a colour code and marketing colour name, used as a key dimension in
+        Columbia's product catalog and PLM APIs.
+      tags:
+        - product
+        - catalog
+        - apparel
+        - colorway
+
+    - term: WeatherAPI
+      definition: >-
+        Columbia's weather data service exposing current conditions and forecasts
+        for geographic locations, enabling retail and commerce applications to
+        surface contextually relevant outerwear and gear recommendations.
+      tags:
+        - weather
+        - geolocation
+        - contextual
+
+    - term: Translation
+      definition: >-
+        Localisation and translation APIs that convert product descriptions,
+        marketing copy, and UI strings from one language to another to support
+        Columbia's global multi-brand commerce operations.
+      tags:
+        - translation
+        - localisation
+        - i18n
+        - global
+
+    - term: BrandPortfolio
+      definition: >-
+        Columbia Sportswear Company's family of four owned brands—Columbia,
+        Mountain Hardwear, SOREL, and prAna—each with distinct product lines,
+        consumer segments, and digital commerce footprints served by the shared
+        API platform.
+      tags:
+        - brand
+        - portfolio
+        - columbia
+        - mountain-hardwear
+        - sorel
+        - prana

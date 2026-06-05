@@ -1,0 +1,115 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "gs1": "https://www.gs1.org/voc/",
+    "retail": "https://schema.org/retailer/",
+
+    "ColumbiaDigitalPortal": {
+      "@id": "schema:WebAPI",
+      "@type": "@id"
+    },
+
+    "Organization": "schema:Organization",
+    "name": "schema:name",
+    "url": "schema:url",
+    "description": "schema:description",
+    "brand": "schema:brand",
+    "industry": "schema:industry",
+    "foundingDate": "schema:foundingDate",
+    "location": "schema:location",
+    "sameAs": "schema:sameAs",
+
+    "APIProduct": {
+      "@id": "schema:WebAPI",
+      "@type": "@id"
+    },
+    "apiEndpoint": "schema:entryPoint",
+    "subscriptionKey": "schema:accessCode",
+    "apiVersion": "schema:version",
+    "authorizationMethod": "schema:actionAccessibilityRequirement",
+
+    "Order": "schema:Order",
+    "orderId": "schema:orderNumber",
+    "orderStatus": "schema:orderStatus",
+    "orderDate": "schema:orderDate",
+    "orderItems": "schema:orderedItem",
+    "fulfillmentChannel": {
+      "@id": "schema:additionalType",
+      "@type": "xsd:string"
+    },
+    "b2bOrder": {
+      "@id": "schema:Order",
+      "@type": "@id"
+    },
+    "dtcOrder": {
+      "@id": "schema:Order",
+      "@type": "@id"
+    },
+
+    "Product": "schema:Product",
+    "productId": "schema:productID",
+    "sku": "schema:sku",
+    "gtin": "gs1:gtin",
+    "productName": "schema:name",
+    "productDescription": "schema:description",
+    "category": "schema:category",
+    "brand_name": "schema:brand",
+    "colorway": "schema:color",
+    "size": "schema:size",
+    "material": "schema:material",
+    "catalogStatus": {
+      "@id": "schema:itemCondition",
+      "@type": "xsd:string"
+    },
+
+    "Consumer": "schema:Person",
+    "consumerId": "schema:identifier",
+    "loyaltyProfile": "schema:ProgramMembership",
+    "loyaltyPoints": "schema:membershipNumber",
+    "consumerPreferences": "schema:knowsAbout",
+
+    "WeatherData": "schema:WeatherForecast",
+    "temperature": "schema:Temperature",
+    "weatherCondition": "schema:description",
+    "location_weather": "schema:Place",
+
+    "Translation": "schema:TranslationAction",
+    "sourceLanguage": "schema:inLanguage",
+    "targetLanguage": "schema:inLanguage",
+    "translatedText": "schema:text",
+
+    "CognitiveSearch": "schema:SearchAction",
+    "searchQuery": "schema:query",
+    "searchResults": "schema:result",
+    "recommendation": "schema:ItemList",
+
+    "EDI": {
+      "@id": "schema:StructuredValue",
+      "@type": "@id"
+    },
+    "purchaseOrder": "schema:OrderAction",
+    "advancedShippingNotice": "schema:DeliveryEvent",
+    "invoice": "schema:Invoice",
+    "tradingPartner": "schema:Organization",
+
+    "columbia": {
+      "@id": "schema:Organization",
+      "name": "Columbia Sportswear",
+      "url": "https://www.columbia.com/",
+      "sameAs": [
+        "https://columbia.portal.azure-api.net/",
+        "https://www.columbiasportswear.com/",
+        "https://github.com/columbiasportswear"
+      ]
+    },
+
+    "brands": {
+      "Columbia": "https://www.columbia.com/",
+      "MountainHardwear": "https://www.mountainhardwear.com/",
+      "SOREL": "https://www.sorel.com/",
+      "prAna": "https://www.prana.com/"
+    }
+  }
+}
