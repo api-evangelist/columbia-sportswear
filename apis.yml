@@ -15,7 +15,7 @@ tags:
   - Fortune 1000
 type: Index
 kind: company
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 access: 3rd-Party
 created: '2025-03-23'
 modified: '2026-04-28'
@@ -43,7 +43,7 @@ apis:
       - Product Lifecycle
       - Translation
       - Weather
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://columbia.portal.azure-api.net/
     properties:
       - url: https://columbia.portal.azure-api.net/
