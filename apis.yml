@@ -47,7 +47,7 @@ apis:
     humanURL: https://columbia.portal.azure-api.net/
     properties:
       - url: https://columbia.portal.azure-api.net/
-        type: Developer Portal
+        type: DeveloperPortal
       - url: https://columbia-dev.portal.azure-api.net/
         type: Developer Portal (Dev)
     description: >-
@@ -80,7 +80,7 @@ common:
     url: https://www.columbia.com/
   - type: Corporate
     url: https://www.columbiasportswear.com/
-  - type: Developer Portal
+  - type: DeveloperPortal
     url: https://columbia.portal.azure-api.net/
   - type: Developer Portal (Dev)
     url: https://columbia-dev.portal.azure-api.net/
@@ -96,7 +96,7 @@ common:
     url: https://europe-customers.columbia.com/hc/en-us
   - type: PrivacyPolicy
     url: https://www.columbia.com/privacy.html
-  - type: Terms of Use
+  - type: TermsOfService
     url: https://www.columbia.com/terms-and-conditions.html
 maintainers:
   - FN: Kin Lane
