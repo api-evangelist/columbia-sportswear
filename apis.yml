@@ -72,6 +72,8 @@ apis:
       - Drive store and fulfillment decisions with weather data
       - Enable translation and localization for global commerce
 common:
+  - type: DomainSecurity
+    url: security/columbia-sportswear-domain-security.yml
   - type: GitHubOrganization
     url: https://github.com/columbiasportswear
   - type: LinkedIn

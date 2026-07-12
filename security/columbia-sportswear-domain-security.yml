@@ -1,0 +1,28 @@
+generated: '2026-07-11'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: www.columbia.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Aug 25 23:59:59 2026 GMT
+  hsts: true
+  hsts_max_age: 31536000
+- host: columbia.portal.azure-api.net
+  https: true
+  tls_cert_error: '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch,
+    certificate is not valid for ''columbia.po'
+  hsts: null
+domains:
+- domain: columbia.com
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: reject
+- domain: azure-api.net
+  dnssec: false
+  caa:
+  - 0 contactemail "caarecordaware@microsoft.com"
+  spf: false
+  dmarc: false
