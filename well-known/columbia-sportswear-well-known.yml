@@ -1,0 +1,104 @@
+generated: '2026-09-05'
+method: probed
+source: >-
+  Direct anonymous HTTPS probes of the named /.well-known/ path list on every host
+  this record knows: the registrable domain and www, the API gateway host from
+  the OpenAPI servers[] block, and the developer portal host.
+provider: Columbia Sportswear
+providerId: columbia-sportswear
+summary:
+  documents_found: 0
+  note: >-
+    Columbia Sportswear serves no /.well-known/ discovery document on any host.
+    Both columbia.com and www.columbia.com answer every path with the storefront's
+    branded 404 page; api.columbia.com (Azure API Management) answers with the
+    APIM JSON 404 envelope; and the developer portal answers with its SPA 404
+    view. Nothing here is a served document — this file records a verified
+    absence, so NO WellKnown or SecurityTxt pointer is emitted in apis.yml.
+hosts:
+  - host: columbia.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+  - host: www.columbia.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+      - path: /llms.txt
+        status: 404
+  - host: api.columbia.com
+    note: >-
+      The production API gateway named in the Content Hub External API servers[]
+      block. Every path returns the Azure API Management JSON 404 envelope
+      { "statusCode": 404, "message": "Resource not found" }.
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/oauth-protected-resource
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+      - path: /llms.txt
+        status: 404
+      - path: /openapi.json
+        status: 404
+      - path: /swagger.json
+        status: 404
+  - host: columbia.developer.azure-api.net
+    note: >-
+      The live developer portal. Every path returns the portal SPA's 404 view
+      (HTTP 404, text/html) — not a document.
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/oauth-protected-resource
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

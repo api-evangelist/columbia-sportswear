@@ -1,0 +1,61 @@
+generated: '2026-09-05'
+method: searched
+source: >-
+  registry.npmjs.org search + registry metadata; pypi.org, and the Columbia
+  Sportswear developer portal (columbia.developer.azure-api.net). No first-party
+  client SDK is published for the Content Hub External API.
+provider: Columbia Sportswear
+providerId: columbia-sportswear
+summary:
+  sdk_count: 0
+  package_count: 1
+  note: >-
+    Columbia Sportswear publishes NO client SDK for its API surface. The Content
+    Hub External API is consumed as a plain HTTPS/JSON call with an Azure API
+    Management subscription key, and the developer portal ships only the built-in
+    APIM "try it" console and code snippets, not a maintained library. The single
+    package below is a UI web-component library, not an API client.
+registries_checked:
+  - registry: npm
+    url: https://registry.npmjs.org/-/v1/search?text=columbia%20sportswear
+    result: 1 package published from a columbia.com address
+  - registry: pypi
+    url: https://pypi.org/pypi/columbia-sportswear/json
+    result: 404 — no package
+  - registry: npm (scope)
+    url: https://registry.npmjs.org/-/v1/search?text=scope:columbia
+    result: 0 packages — no @columbia npm scope is registered
+packages:
+  - name: csc-ryson-stencil-webcomponents
+    registry: npm
+    url: https://www.npmjs.com/package/csc-ryson-stencil-webcomponents
+    metadata_url: https://registry.npmjs.org/csc-ryson-stencil-webcomponents
+    description: Columbia Sportswear Company Web Components (Stencil)
+    language: javascript
+    kind: ui-components
+    official: false
+    version: 0.0.37
+    published: '2021-12-15'
+    first_published: '2021-11-09'
+    version_count: 35
+    license: MIT
+    repository: https://bitbucket.org/columbiasportswear/webcomponents
+    maintainer_domain: columbia.com
+    note: >-
+      Published by a columbia.com maintainer address and pointing at the
+      bitbucket.org/columbiasportswear organisation, so it is Columbia-authored —
+      but it is namespaced to an individual ("csc-ryson-") rather than a company
+      scope, carries no company README or support channel, and its last release
+      is 2021-12-15, more than four years before this pass. Recorded as
+      unofficial for that reason. It is a Stencil web-component library for
+      Columbia's storefronts, NOT a client for the Content Hub External API.
+decay_signal:
+  observed: true
+  detail: >-
+    The only Columbia-authored package in any public registry has not shipped a
+    release since 2021-12-15 and its source repository is on Bitbucket, not the
+    github.com/columbiasportswear organisation the catalog links. The four public
+    repos in that GitHub organisation were last updated between 2017 and 2018.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

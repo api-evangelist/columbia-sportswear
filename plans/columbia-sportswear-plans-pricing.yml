@@ -4,42 +4,65 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Columbia Sportswear
 providerId: columbia-sportswear
 created: '2026-05-04'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-05'
-reconciled: false
+modified: '2026-09-05'
+generated: '2026-09-05'
+method: probed
+source: >-
+  https://columbia.developer.azure-api.net/mapi/products?api-version=2021-08-01 —
+  the machine-readable product catalogue of Columbia's own Azure API Management
+  developer portal, read anonymously on 2026-09-05.
+reconciled: true
 tags:
   - Retail
   - Apparel
-  - E-Commerce
-description: Columbia Sportswear is a consumer outdoor-apparel retailer. There is no public developer
-  API or public API pricing — wholesale, B2B EDI, and partner integrations are negotiated through Columbia's
-  business channels rather than offered as a self-service developer plan.
-sources:
-  - https://www.columbia.com/
-notes: No public API pricing or developer plan published. Any data exchange is governed by retailer/wholesale
-  partner agreements.
+  - Partner API
+plan_count: 1
+priced_plan_count: 0
+description: >-
+  Columbia Sportswear publishes NO price for API access. Its developer portal
+  exposes exactly one product anonymously — ContentHub External — and that product
+  is an access tier, not a commercial plan: it requires a subscription, requires
+  Columbia's approval before a key is issued, and carries no price, quota, overage
+  or billing period of any kind. Access is governed by the partner or vendor
+  agreement a subscriber already holds with Columbia, not by a published tier.
+notes: >-
+  plan_count is 1 because one real access tier is published and machine-readable.
+  priced_plan_count is 0 because Columbia publishes no price for it. Previous
+  rounds of this artifact recorded a generated "Wholesale / Partner Integration"
+  plan that Columbia never published; it has been replaced with the tier the
+  provider's own catalogue actually returns.
 plans:
-  - id: columbia-sportswear-partner
-    name: Wholesale / Partner Integration
-    type: enterprise
-    description: B2B EDI/data integration negotiated with Columbia's wholesale or e-commerce partner channels.
-    entries:
-      - label: Custom partner contract
-        name: partner_custom
-        type: subscription
-        metric: contract
-        limit: -1
-        timeFrame: month
-        geo: global
-        unit: 1
-        price: contact partner channel
-        userMultiplied: false
-    elements:
-      - name: Wholesale ordering
-      - name: EDI / data exchange
-      - name: Affiliate program
+  - id: contenthub-external
+    name: ContentHub External
+    type: partner
+    state: published
+    description: ContentHub Image service endpoints for external customers.
+    subscription_required: true
+    approval_required: true
+    subscriptions_limit: null
+    price: not published
+    currency: null
+    billing_period: null
+    included_quota: not published
+    overage: not published
+    limits: not published
+    apis:
+      - Content Hub External API
+    signup: https://columbia.developer.azure-api.net/signup
+    request: https://columbia.developer.azure-api.net/products
+    access_terms: >-
+      The product's own terms restrict portal access to Columbia employees and to
+      employees of vendors providing services to Columbia under an agreement
+      between that vendor and Columbia. This is a partner API with an approval
+      gate, not a self-service developer plan.
+    source: https://columbia.developer.azure-api.net/mapi/products?api-version=2021-08-01
+evidence:
+  - url: https://columbia.developer.azure-api.net/mapi/products?api-version=2021-08-01
+    status: 200
+    finding: 'count: 1 — contenthub-external, state published, subscriptionRequired true, approvalRequired true'
+  - url: https://columbia.developer.azure-api.net/
+    status: 200
+    finding: Live developer portal; no pricing page and no pricing navigation item.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

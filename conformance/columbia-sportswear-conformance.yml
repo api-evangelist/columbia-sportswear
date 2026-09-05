@@ -1,0 +1,112 @@
+generated: '2026-09-05'
+method: derived
+source: >-
+  openapi/columbia-sportswear-content-hub-external-openapi.json plus live probes of
+  api.columbia.com and columbia.developer.azure-api.net on 2026-09-05, and a search
+  of columbia.com and the developer portal for published compliance claims.
+provider: Columbia Sportswear
+providerId: columbia-sportswear
+summary: >-
+  The contract asserts OpenAPI 3.0.1 and nothing else. There is no OAuth, OIDC,
+  RFC 9457, JSON:API, OData, SCIM or pagination-standard signature anywhere in the
+  spec or on the wire, and Columbia publishes no certification or compliance
+  program for its API surface. Recorded as measured absences; nothing was invented
+  to fill a slot.
+conformance:
+  - id: openapi-3.0
+    conforms: true
+    evidence: >-
+      openapi/columbia-sportswear-content-hub-external-openapi.json declares
+      "openapi": "3.0.1" and was exported by Columbia's own Azure API Management
+      instance via /mapi/apis/{id}?export=true&format=openapi+json.
+  - id: apikey-auth
+    conforms: true
+    evidence: >-
+      components.securitySchemes declares apiKeyHeader (Ocp-Apim-Subscription-Key,
+      header) and apiKeyQuery (subscription-key, query); both are applied by a
+      top-level security requirement. Confirmed on the wire by a 401 carrying
+      'WWW-Authenticate: AzureApiManagementKey'.
+  - id: oauth2
+    conforms: false
+    evidence: >-
+      No oauth2 securityScheme in the contract; authenticationSettings.oAuth2 is
+      null on the API Management API object; /.well-known/oauth-authorization-server
+      returns 404 on api.columbia.com and on the developer portal host.
+  - id: oidc
+    conforms: false
+    evidence: >-
+      No openIdConnect securityScheme; authenticationSettings.openid is null;
+      /.well-known/openid-configuration returns 404 on every probed host.
+  - id: rfc9457
+    conforms: false
+    evidence: >-
+      No application/problem+json media type in the contract. The live error
+      envelope observed at api.columbia.com is
+      { "statusCode": <int>, "message": "<string>" }.
+  - id: rfc9116-security-txt
+    conforms: false
+    evidence: >-
+      /.well-known/security.txt returns 404 on columbia.com, www.columbia.com,
+      api.columbia.com and columbia.developer.azure-api.net.
+  - id: rfc8594-sunset
+    conforms: false
+    evidence: >-
+      No Sunset or Deprecation response header observed on any live probe, and no
+      deprecation policy published.
+  - id: pagination
+    conforms: partial
+    evidence: >-
+      GetSeasonalAssetsBulk offers Skip/Take offset paging with a documented cap of
+      1000 on Take, but the 200 response carries no schema, so no total count or
+      next-page signal is described. GetSeasonalAssets has no paging at all.
+  - id: idempotency
+    conforms: na
+    evidence: >-
+      Read-only surface — both published operations are GET. See
+      conventions/columbia-sportswear-conventions.yml.
+  - id: json-api
+    conforms: false
+    evidence: No application/vnd.api+json media type and no JSON:API document structure.
+  - id: odata
+    conforms: false
+    evidence: No $metadata surface and no OData query options in the contract.
+  - id: scim
+    conforms: false
+    evidence: No urn:ietf:params:scim schema URN anywhere in the contract.
+domain_standard:
+  market: Apparel and footwear wholesale / retail supply chain
+  standards_probed:
+    - id: gs1-gtin
+      conforms: false
+      evidence: >-
+        The identifier the contract keys on is a Columbia-internal "10 Didgit
+        product number" (MaterialNumber, example 1442362613), not a GTIN, GS1
+        Digital Link or any other GS1 identifier scheme. No GS1 vocabulary appears
+        in the spec.
+    - id: x12-edi
+      conforms: false
+      evidence: >-
+        Columbia is known to exchange X12 EDI documents with retail trading
+        partners through third-party VANs, but no EDI transaction set is described
+        by any API contract Columbia publishes, so there is nothing in a contract
+        to conform against.
+    - id: gs1-epcis
+      conforms: false
+      evidence: No EPCIS event vocabulary in the contract.
+  finding: >-
+    No domain standard is declared by the contract. This is reward-only in the
+    rubric and Columbia is not penalised for it — but it is worth recording that
+    an apparel product-imagery API keyed on an internal material number rather
+    than a GTIN is exactly the case where a GS1 identifier would let a trading
+    partner integrate with no bespoke mapping.
+compliance_program:
+  published: false
+  certifications: []
+  trust_center: null
+  detail: >-
+    No trust centre, no SOC 2 / ISO 27001 / PCI / HIPAA / FedRAMP claim, and no
+    security or compliance page was found for the API surface. trust.columbia.com
+    does not resolve. No Compliance pointer is emitted in apis.yml.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

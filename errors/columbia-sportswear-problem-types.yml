@@ -1,0 +1,81 @@
+generated: '2026-09-05'
+method: derived
+source: >-
+  openapi/columbia-sportswear-content-hub-external-openapi.json (documented 4xx/5xx
+  responses) plus live anonymous probes of https://api.columbia.com/ContentHubExternal
+  on 2026-09-05 for the gateway-level envelope.
+provider: Columbia Sportswear
+providerId: columbia-sportswear
+format: vendor-json
+rfc9457: false
+summary:
+  problem_type_count: 5
+  note: >-
+    Columbia publishes no error reference page and no application/problem+json
+    media type. The contract documents 400 and 500 per operation with a prose
+    description only — no response schema, no error code registry, no example
+    body. The 401/404/429 envelopes below are the Azure API Management gateway's
+    own, observed live, not Columbia-authored.
+envelope:
+  shape: '{ "statusCode": <int>, "message": "<string>" }'
+  media_type: application/json
+  observed_at: https://api.columbia.com/ContentHubExternal
+  observed_on: '2026-09-05'
+  source: Azure API Management gateway default envelope
+  note: >-
+    The two documented application errors (400, 500) carry no schema in the spec,
+    so it is not stated whether they use this same envelope or the backend's own.
+    That is a real contract gap, not an omission on our side.
+problem_types:
+  - status: 400
+    title: Material Number is required
+    operation: get-api-external-image-getseasonalassets-materialnumber-materialnumber
+    source: openapi
+    detail: >-
+      Returned by GetSeasonalAssets when the required MaterialNumber query
+      parameter is absent.
+    remediation: Supply MaterialNumber as a 10-digit product number, e.g. 1442362613.
+  - status: 400
+    title: Maximum Take size is 1000
+    operation: get-api-external-image-getseasonalassetsbulk
+    source: openapi
+    detail: >-
+      Returned by GetSeasonalAssetsBulk when the Take paging parameter exceeds
+      1000.
+    remediation: Request Take <= 1000 and page with Skip.
+  - status: 401
+    title: Access denied due to missing subscription key
+    source: probed
+    detail: >-
+      Gateway response when no Ocp-Apim-Subscription-Key header and no
+      subscription-key query parameter is present. Accompanied by
+      'WWW-Authenticate: AzureApiManagementKey realm="https://api.columbia.com/ContentHubExternal",
+      name="Ocp-Apim-Subscription-Key", type="header"'.
+    remediation: >-
+      Include the subscription key issued through the developer portal on every
+      request.
+  - status: 401
+    title: Access denied due to invalid subscription key
+    source: probed
+    detail: >-
+      Gateway response when a key is present but is not valid for an active
+      subscription.
+    remediation: >-
+      Confirm the subscription is approved and active in the developer portal and
+      that the key matches the product granting access to this API.
+  - status: 500
+    title: Unexpected Exception
+    operation: both
+    source: openapi
+    detail: Documented on both operations as an unqualified server-side failure.
+    remediation: >-
+      Retry with backoff. No error code, correlation identifier or support
+      reference is documented for this class.
+gaps:
+  - No RFC 9457 application/problem+json representation.
+  - No published error-code registry or error reference page.
+  - No response schema attached to any 4xx or 5xx response in the contract.
+  - No documented correlation or request identifier for support escalation.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

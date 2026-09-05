@@ -1,0 +1,91 @@
+# API Evangelist enrichment overlay for the Columbia Sportswear Content Hub External API.
+# generated: '2026-09-05'
+# method: generated
+# source: openapi/columbia-sportswear-content-hub-external-openapi.json
+#
+# This overlay carries API Evangelist's enhancements. It NEVER mutates the original
+# contract: the file it extends is Columbia's own export, saved verbatim. Every action
+# below adds descriptive metadata that is missing from the source, or corrects a typo
+# that is present in it. Nothing here invents behaviour.
+overlay: 1.0.0
+info:
+  title: API Evangelist enrichment — Columbia Sportswear Content Hub External API
+  version: 1.0.0
+extends: ../openapi/columbia-sportswear-content-hub-external-openapi.json
+actions:
+  - target: $.info
+    description: >-
+      Attribute the contract and record where it was obtained. The source
+      description is the bare string "Content Hub External API", which repeats the
+      title and tells a consumer nothing.
+    update:
+      contact:
+        name: Columbia Sportswear Developer Portal
+        url: https://columbia.developer.azure-api.net/
+      x-provider: Columbia Sportswear
+      x-provider-id: columbia-sportswear
+      x-obtained-from: https://columbia.developer.azure-api.net/mapi/apis/4cad0e39673846b186038d3113e5a4ab?export=true&format=openapi%2Bjson&api-version=2021-08-01
+      x-obtained-on: '2026-09-05'
+      x-access: >-
+        Partner API. An Azure API Management subscription key is required on every
+        call, and every subscription requires Columbia's approval. Portal terms
+        restrict access to Columbia employees and to employees of vendors providing
+        services to Columbia under agreement.
+  - target: $.servers[0]
+    description: Name the production gateway so the host is not left unlabelled.
+    update:
+      description: >-
+        Production Azure API Management gateway on Columbia's own domain. Custom
+        hostname on the API Management instance named "columbia"; the API is
+        mounted at the ContentHubExternal path.
+  - target: $.tags
+    description: >-
+      Declare the tag the operations already reference. The source contract uses
+      the ExternalImage tag on both operations but never declares it at the root,
+      which is a validation gap in Columbia's export.
+    update:
+      - name: ExternalImage
+        description: >-
+          Read access to Columbia product imagery ("seasonal assets") for external
+          partners.
+  - target: $.paths['/api/external/image/GetSeasonalAssets'].get.responses['200']
+    description: >-
+      Record that the success response carries no schema. A consumer cannot tell
+      from this contract what shape comes back.
+    update:
+      x-schema-published: false
+      x-note: >-
+        The contract documents this response with a prose description only. No
+        media type, schema or example is declared, so the asset representation must
+        be discovered by calling the API with an approved key.
+  - target: $.paths['/api/external/image/GetSeasonalAssetsBulk'].get.responses['200']
+    description: Same gap on the bulk operation.
+    update:
+      x-schema-published: false
+      x-note: >-
+        No media type, schema or example is declared. The paging envelope — total
+        count, whether Take was truncated, how to detect the last page — is
+        undocumented.
+  - target: $.paths['/api/external/image/GetSeasonalAssets'].get.parameters[0]
+    description: >-
+      Correct the misspelling carried in Columbia's own description ("10 Didgit")
+      without altering the source file.
+    update:
+      description: 10-digit Columbia product (material) number.
+  - target: $.paths['/api/external/image/GetSeasonalAssetsBulk'].get.parameters[5]
+    description: Record the documented cap that only appears in the 400 response text.
+    update:
+      x-maximum: 1000
+      description: >-
+        Page size. Values above 1000 are rejected with HTTP 400 "Maximum Take size
+        is 1000".
+  - target: $.components
+    description: >-
+      Record the observed error envelope. It is not in the contract; it was seen on
+      a live anonymous call to the gateway.
+    update:
+      x-observed-error-envelope:
+        media_type: application/json
+        shape: '{ "statusCode": <int>, "message": "<string>" }'
+        observed_on: '2026-09-05'
+        rfc9457: false

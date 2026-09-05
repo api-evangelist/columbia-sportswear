@@ -1,0 +1,81 @@
+generated: '2026-09-05'
+method: derived
+source: openapi/columbia-sportswear-content-hub-external-openapi.json
+provider: Columbia Sportswear
+providerId: columbia-sportswear
+summary: >-
+  The published contract describes no data model. components.schemas is absent
+  entirely — the only thing under components is securitySchemes — and neither 200
+  response declares a media type, schema or example. The entity graph below is
+  therefore inferred from parameter names and operation semantics only, and is
+  recorded as inferred, not derived from $ref links, because there are none.
+schema_count: 0
+relationship_count: 1
+entities:
+  - name: Material
+    inferred: true
+    description: >-
+      A Columbia product, addressed by a 10-digit material number. This is the
+      only first-class identifier the contract exposes.
+    identifier:
+      field: MaterialNumber
+      type: string
+      format: 10-digit numeric
+      example: '1442362613'
+      scheme: Columbia-internal
+      note: >-
+        Not a GTIN and not any GS1 identifier — a partner integrating against this
+        API needs a Columbia-specific material-number mapping.
+    source: >-
+      Required query parameter of
+      get-api-external-image-getseasonalassets-materialnumber-materialnumber.
+  - name: SeasonalAsset
+    inferred: true
+    description: >-
+      A product image associated with a material. The contract never describes its
+      representation; both operations return it with a prose description only
+      ("Returns the Assets" / "Returns the Product Shot Assets").
+    attributes_inferred_from_filters:
+      - name: Perspective
+        type: string
+        example: f
+        note: Shot perspective. Permitted values are not enumerated in the contract.
+      - name: SubType
+        type: string
+        example: On Model
+        note: >-
+          Asset subtype. "Product Shot" is named in both operation summaries as the
+          class an unauthorised caller is limited to, but no enumeration is
+          published.
+      - name: ModifiedOn
+        type: string
+        format: date-time
+        note: >-
+          Not returned as a declared field, but filterable via ModifiedOnStartRange
+          and ModifiedOnEndRange, which implies the asset carries a modification
+          timestamp.
+    identifier: null
+relationships:
+  - from: Material
+    to: SeasonalAsset
+    type: has_many
+    via: MaterialNumber
+    confidence: high
+    evidence: >-
+      GetSeasonalAssets takes a single MaterialNumber and its summary is "Assets
+      Query" (plural), so one material resolves to many assets.
+access_rules_in_contract:
+  - rule: >-
+      Both operation summaries state that unauthorised users get access only to
+      Product Shot imagery older than a configured season. The season threshold is
+      not published, and the contract does not describe how an authorised caller is
+      distinguished beyond holding a subscription key.
+    source: operation summaries
+gaps:
+  - components.schemas is absent — the contract defines zero reusable schemas.
+  - No 2xx response declares a media type, schema or example.
+  - No enumerations published for Perspective or SubType.
+  - The asset representation has no identifier, URL field or size/format metadata described.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

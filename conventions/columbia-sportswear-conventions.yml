@@ -1,0 +1,124 @@
+generated: '2026-09-05'
+method: derived
+source: >-
+  openapi/columbia-sportswear-content-hub-external-openapi.json, the Azure API
+  Management developer portal at https://columbia.developer.azure-api.net/, and
+  live anonymous probes of https://api.columbia.com/ContentHubExternal on
+  2026-09-05.
+provider: Columbia Sportswear
+providerId: columbia-sportswear
+summary: >-
+  Columbia's one anonymously documented API is a read-only, key-authenticated
+  image-lookup service fronted by Azure API Management. Its cross-cutting
+  semantics are almost entirely the platform's defaults rather than published
+  Columbia conventions: there is no idempotency contract to state because there
+  is no write surface, no request-id header is documented, no versioning or
+  deprecation policy is published, and no rate-limit signal is documented or
+  observable anonymously.
+auth:
+  style: api-key
+  transport:
+    - header: Ocp-Apim-Subscription-Key
+    - query: subscription-key
+  scheme_source: openapi components.securitySchemes
+  applied: global security requirement on every operation
+  challenge: 'WWW-Authenticate: AzureApiManagementKey (observed on a live 401)'
+  oauth: false
+  see_also: authentication/columbia-sportswear-authentication.yml
+idempotency:
+  coverage: na
+  mechanism: none
+  header: null
+  detail: >-
+    The published surface has no mutating operations — both documented operations
+    are GET and therefore idempotent by HTTP semantics. There is no
+    Idempotency-Key header, no request-replay contract and nothing for one to
+    protect. Recorded as na rather than none because a read-only API is not a
+    provider that omitted replay protection; it is a provider with nothing to
+    replay.
+  see_also: null
+reversibility:
+  grade: na
+  detail: >-
+    No write, cancel, refund, void, delete or restore operation exists on the
+    published surface, so there is no action an agent could take that would need
+    taking back. Recorded as na, not zero.
+  write_surfaces: []
+dry_run_mode:
+  supported: na
+  detail: >-
+    na for the same reason as reversibility — a read-only API needs no rehearsal
+    mode.
+pagination:
+  style: offset
+  params:
+    - name: Skip
+      type: integer
+      default: 0
+      description: Number of records to skip.
+    - name: Take
+      type: integer
+      default: 100
+      max: 1000
+      description: Page size. A Take above 1000 is rejected with HTTP 400.
+  scope: GetSeasonalAssetsBulk only
+  response_fields: >-
+    Not documented. The 200 response carries no schema, so the shape of the
+    result envelope, the total count and any next-page cursor are unknown from
+    the contract.
+  cursor: false
+filtering:
+  supported: true
+  params:
+    - Perspective
+    - SubType
+    - ModifiedOnStartRange
+    - ModifiedOnEndRange
+  detail: >-
+    A modified-on date range is offered on both operations, which is the closest
+    thing this API has to an incremental-sync convention.
+field_expansion:
+  supported: false
+sparse_fieldsets:
+  supported: false
+metadata:
+  supported: false
+request_id_tracing:
+  documented: false
+  observed: >-
+    The gateway returns an 'x-azure-ref' header on error responses, which is Azure
+    Front Door's own correlation value, not a Columbia-documented request id. No
+    support process references it.
+versioning:
+  style: none-in-contract
+  detail: >-
+    info.version is "1.0" and the API Management revision is 1, but no version is
+    carried in the path, a header or a query parameter, and no version-set is
+    configured on the API. Columbia publishes no versioning policy.
+  see_also: lifecycle/columbia-sportswear-lifecycle.yml
+error_envelope:
+  shape: '{ "statusCode": <int>, "message": "<string>" }'
+  rfc9457: false
+  detail: >-
+    Observed live at the gateway. The two documented application errors carry no
+    schema, so it is unstated whether they share this envelope.
+  see_also: errors/columbia-sportswear-problem-types.yml
+rate_limit_signaling:
+  documented: false
+  headers_observed: []
+  status_on_exhaustion: null
+  detail: >-
+    No RateLimit-* or X-RateLimit-* header was returned on any anonymous probe,
+    and the API Management rate-limit policy is not readable anonymously (the
+    policy endpoint returns 401). Columbia publishes no limits.
+  see_also: rate-limits/columbia-sportswear-rate-limits.yml
+content_negotiation:
+  request: query parameters only, no request body on either operation
+  response: application/json (undeclared in the contract; observed at the gateway)
+transport:
+  protocols:
+    - https
+  http_version_observed: HTTP/2
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

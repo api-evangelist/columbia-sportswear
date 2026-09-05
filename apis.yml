@@ -1,18 +1,18 @@
 aid: columbia-sportswear
-url: >-
-  https://raw.githubusercontent.com/api-evangelist/columbia-sportswear/refs/heads/main/apis.yml
+url: https://raw.githubusercontent.com/api-evangelist/columbia-sportswear/refs/heads/main/apis.yml
 name: Columbia Sportswear
 tags:
-  - Apparel
-  - B2B
-  - Consumer Management
-  - Cognitive
-  - Footwear
-  - Order Management
-  - Outdoor
-  - Product Lifecycle
-  - Retail
-  - Fortune 1000
+- Apparel
+- B2B
+- Consumer Management
+- Content Management
+- Digital Asset Management
+- Footwear
+- Fortune 1000
+- Outdoor
+- Partner APIs
+- Product Imagery
+- Retail
 type: Index
 kind: company
 deliveryModel:
@@ -41,89 +41,152 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/columbia-sportswear.png
 access: 3rd-Party
 created: '2025-03-23'
-modified: '2026-04-28'
+modified: '2026-09-05'
 position: Consuming
-description: >-
-  Columbia Sportswear is a global designer, marketer, and distributor of
-  outdoor, active, and everyday lifestyle apparel, footwear, accessories, and
-  equipment under the Columbia, Mountain Hardwear, SOREL, and prAna brands.
-  Columbia Sportswear Digital operates a partner-focused developer portal on
-  Microsoft Azure API Management at columbia.portal.azure-api.net, exposing
-  APIs for Order Management, Consumer Management, Product Lifecycle Management,
-  Cognitive, Weather, and Translation. The developer portal is gated:
-  registered partners create an account, browse products and APIs, request
-  subscription keys, and integrate against the published endpoints. The
-  company also exchanges traditional EDI documents (POs, ASNs, invoices) with
-  retail trading partners through providers like TrueCommerce and eZCom.
+description: 'Columbia Sportswear is a global designer, marketer, and distributor of outdoor, active,
+  and everyday lifestyle apparel, footwear, accessories, and equipment under the Columbia, Mountain Hardwear,
+  SOREL, and prAna brands. Columbia Sportswear Digital runs a partner-facing API estate on Microsoft Azure
+  API Management: a developer portal at columbia.developer.azure-api.net and a production gateway on Columbia''s
+  own domain at api.columbia.com. Exactly one API product is documented anonymously - ContentHub External,
+  a read-only product-imagery service with a published OpenAPI 3.0.1 contract - and every other product
+  on the portal requires sign-in. Access is a partner arrangement rather than a developer program: subscriptions
+  require Columbia''s approval, portal terms restrict use to Columbia employees and to vendors serving
+  Columbia under agreement, and no price, rate limit, SLA or status page is published. The company also
+  exchanges traditional EDI documents (POs, ASNs, invoices) with retail trading partners through providers
+  like TrueCommerce and eZCom.'
 apis:
-  - aid: columbia-sportswear:digital-developer-portal
-    name: Columbia Sportswear Digital Developer Portal
-    tags:
-      - Cognitive
-      - Consumer Management
-      - Order Management
-      - Partner APIs
-      - Product Lifecycle
-      - Translation
-      - Weather
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://columbia.portal.azure-api.net/
-    properties:
-      - url: https://columbia.portal.azure-api.net/
-        type: DeveloperPortal
-      - url: https://columbia-dev.portal.azure-api.net/
-        type: Developer Portal (Dev)
-    description: >-
-      Columbia Sportswear's partner-facing API platform hosted on Microsoft
-      Azure API Management. The portal organizes APIs across Order Management
-      (B2B and DTC orders), Consumer Management (loyalty, profiles), Product
-      Lifecycle Management (catalog, content, classification), Cognitive
-      (search and recommendations), Weather, and Translation. Subscription
-      keys are required and granted on a per-partner basis. The portal exposes
-      try-it consoles, request examples, and documentation per API product.
-    x-features:
-      - Hosted on Microsoft Azure API Management
-      - Subscription-key based authentication
-      - Multi-product API catalog (Order, Consumer, PLM, Cognitive, Weather, Translation)
-      - Self-service partner onboarding and key request
-      - Try-it consoles per API operation
-      - Dev and production portal environments
-    x-use-cases:
-      - Power retail partner order fulfillment workflows
-      - Sync product catalog data with marketplaces
-      - Personalize consumer experiences via consumer-management APIs
-      - Drive store and fulfillment decisions with weather data
-      - Enable translation and localization for global commerce
+- aid: columbia-sportswear:digital-developer-portal
+  name: Columbia Sportswear Digital Developer Portal
+  tags:
+  - Azure API Management
+  - Developer Portal
+  - Partner APIs
+  - Retail
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://columbia.developer.azure-api.net/
+  properties:
+  - url: https://columbia.developer.azure-api.net/
+    type: DeveloperPortal
+  - url: https://columbia.developer.azure-api.net/apis
+    type: APIReference
+  - url: https://columbia.developer.azure-api.net/products
+    type: Documentation
+  - url: https://columbia.developer.azure-api.net/signup
+    type: SignUp
+  description: Columbia Sportswear's partner-facing API platform, hosted on Microsoft Azure API Management.
+    The portal at columbia.developer.azure-api.net lists API products, offers a try-it console, and takes
+    subscription requests; the production gateway answers on Columbia's own domain at api.columbia.com.
+    Anonymously, the portal publishes one product - ContentHub External - and everything else requires
+    sign-in. Every subscription requires Columbia's approval before a key is issued. The legacy portal
+    endpoint at columbia.portal.azure-api.net has been retired and now returns HTTP 503; this record was
+    repointed at the live portal on 2026-09-05.
+  x-features:
+  - Hosted on Microsoft Azure API Management
+  - Subscription-key authentication (Ocp-Apim-Subscription-Key header or subscription-key query parameter)
+  - Approval-gated subscriptions - no self-service key issuance
+  - Try-it console and machine-readable OpenAPI export per API product
+  - Production gateway on a first-party custom domain (api.columbia.com)
+  x-use-cases:
+  - Request partner access to a Columbia API product
+  - Browse the published API catalog and export its OpenAPI definition
+  - Manage subscription keys for an approved partner integration
+  baseURL: https://api.columbia.com/
+- aid: columbia-sportswear:content-hub-external
+  name: Content Hub External API
+  tags:
+  - Digital Asset Management
+  - Product Imagery
+  - Retail
+  - Partner APIs
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://columbia.developer.azure-api.net/api-details#api=4cad0e39673846b186038d3113e5a4ab
+  baseURL: https://api.columbia.com/ContentHubExternal
+  description: 'Columbia Sportswear''s ContentHub image service for external customers. A read-only API
+    with two GET operations: look up product imagery ("seasonal assets") for a single 10-digit material
+    number, or page through assets in bulk over a modified-on date range with Skip/Take paging capped
+    at a Take of 1000. Both operations filter on perspective, shot subtype and a modified-on window. Unauthorized
+    callers are limited to Product Shot imagery older than a configured season. Authentication is an Azure
+    API Management subscription key on every call. The OpenAPI 3.0.1 contract in this repo was exported
+    from Columbia''s own API Management instance and declares servers[] https://api.columbia.com/ContentHubExternal
+    - Columbia''s own domain - confirming first-party ownership.'
+  x-features:
+  - OpenAPI 3.0.1 contract published by the provider and exportable from the portal
+  - Subscription-key authentication declared and applied in the contract
+  - Offset paging (Skip/Take) with a documented cap of 1000 on the bulk operation
+  - Modified-on date-range filtering for incremental sync
+  - Read-only - no write, cancel or delete surface
+  x-use-cases:
+  - Sync Columbia product imagery into a retail partner or marketplace catalog
+  - Incrementally pull assets changed since a stored high-water mark
+  - Resolve product photography for a Columbia material number
+  properties:
+  - url: openapi/columbia-sportswear-content-hub-external-openapi.json
+    type: OpenAPI
+  - url: errors/columbia-sportswear-problem-types.yml
+    type: ErrorCatalog
+  - url: conformance/columbia-sportswear-conformance.yml
+    type: Conformance
+  - url: data-model/columbia-sportswear-data-model.yml
+    type: DataModel
 common:
-  - type: DomainSecurity
-    url: security/columbia-sportswear-domain-security.yml
-  - type: GitHubOrganization
-    url: https://github.com/columbiasportswear
-  - type: LinkedIn
-    url: https://www.linkedin.com/company/columbia-sportswear
-  - type: Website
-    url: https://www.columbia.com/
-  - type: Corporate
-    url: https://www.columbiasportswear.com/
-  - type: DeveloperPortal
-    url: https://columbia.portal.azure-api.net/
-  - type: Developer Portal (Dev)
-    url: https://columbia-dev.portal.azure-api.net/
-  - type: Investor Relations
-    url: https://investor.columbia.com/
-  - type: Mountain Hardwear
-    url: https://www.mountainhardwear.com/
-  - type: SOREL
-    url: https://www.sorel.com/
-  - type: prAna
-    url: https://www.prana.com/
-  - type: B2B Support (Europe)
-    url: https://europe-customers.columbia.com/hc/en-us
-  - type: PrivacyPolicy
-    url: https://www.columbia.com/privacy.html
-  - type: TermsOfService
-    url: https://www.columbia.com/terms-and-conditions.html
+- type: Website
+  url: https://www.columbia.com/
+- type: Corporate
+  url: https://www.columbiasportswear.com/
+- type: DeveloperPortal
+  url: https://columbia.developer.azure-api.net/
+- type: APIReference
+  url: https://columbia.developer.azure-api.net/apis
+- type: SignUp
+  url: https://columbia.developer.azure-api.net/signup
+- type: Support
+  url: https://help.columbia.com/s/
+- type: GitHubOrganization
+  url: https://github.com/columbiasportswear
+- type: LinkedIn
+  url: https://www.linkedin.com/company/columbia-sportswear
+- type: PrivacyPolicy
+  url: https://www.columbia.com/t/legal/privacy-policy/
+- type: TermsOfService
+  url: https://www.columbia.com/t/legal/terms-of-use/
+- type: Investor Relations
+  url: https://investor.columbia.com/
+- type: Mountain Hardwear
+  url: https://www.mountainhardwear.com/
+- type: SOREL
+  url: https://www.sorel.com/
+- type: prAna
+  url: https://www.prana.com/
+- type: Authentication
+  url: authentication/columbia-sportswear-authentication.yml
+- type: DomainSecurity
+  url: security/columbia-sportswear-domain-security.yml
+- type: Conventions
+  url: conventions/columbia-sportswear-conventions.yml
+- type: Lifecycle
+  url: lifecycle/columbia-sportswear-lifecycle.yml
+- type: Packages
+  url: packages/columbia-sportswear-packages.yml
+- type: Overlay
+  url: overlays/columbia-sportswear-content-hub-external-overlay.yaml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: LLMsTxt
+  url: llms/columbia-sportswear-llms.txt
+- type: X-MCPServerCandidate
+  url: mcp/columbia-sportswear-mcp.yml
+- type: Vocabulary
+  url: vocabulary/columbia-sportswear-vocabulary.yml
+- type: Plans
+  url: plans/columbia-sportswear-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/columbia-sportswear-rate-limits.yml
 maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+- FN: Kin Lane
+  email: kin@apievangelist.com
 specificationVersion: '0.23'
+x-enrichment:
+  date: '2026-09-05'
+  status: enriched
+  artifacts_added: 15
+  pass: local-v3

@@ -1,0 +1,61 @@
+generated: '2026-09-05'
+method: derived
+source: >-
+  openapi/columbia-sportswear-content-hub-external-openapi.json — derived
+  candidate. Columbia Sportswear publishes no MCP server. The Azure API
+  Management instance backing api.columbia.com reports mcpProperties: null and
+  isAgent: false on its published API, and no hosted or stdio MCP server was
+  found in any registry, the developer portal, or the github.com/columbiasportswear
+  organisation.
+provider: Columbia Sportswear
+providerId: columbia-sportswear
+status: candidate
+deployment:
+  mode: none
+  auth: api-key
+  verified: derived
+  note: >-
+    mode is none because nobody ships an MCP server for this API — not Columbia,
+    not a third party. The tools below are a CANDIDATE surface derived from the
+    two real operations in the published OpenAPI; no endpoint exists to call and
+    none has been invented. Any future server would authenticate with the same
+    Azure API Management subscription key the REST surface uses
+    (Ocp-Apim-Subscription-Key header).
+evidence:
+  - url: https://columbia.developer.azure-api.net/mapi/apis/4cad0e39673846b186038d3113e5a4ab?api-version=2021-08-01
+    status: 200
+    finding: 'properties.mcpProperties: null, properties.isAgent: false, properties.a2aProperties: null'
+server:
+  name: null
+  endpoint: null
+  transport: null
+tools:
+  - name: get_seasonal_assets
+    status: candidate
+    description: >-
+      Look up Columbia product imagery for a single 10-digit material number,
+      optionally narrowed by perspective, shot subtype and a modified-on date
+      range.
+    rest_operation_id: get-api-external-image-getseasonalassets-materialnumber-materialnumber
+    method: GET
+    path: /api/external/image/GetSeasonalAssets
+    input_schema_source: >-
+      Inherits the parameters of the backing operation: MaterialNumber (string,
+      required), Perspective (string), SubType (string), ModifiedOnStartRange
+      (date-time), ModifiedOnEndRange (date-time).
+  - name: get_seasonal_assets_bulk
+    status: candidate
+    description: >-
+      Page through Columbia product imagery in bulk, filtered by perspective,
+      shot subtype and a modified-on date range, with skip/take paging capped at
+      a take of 1000.
+    rest_operation_id: get-api-external-image-getseasonalassetsbulk
+    method: GET
+    path: /api/external/image/GetSeasonalAssetsBulk
+    input_schema_source: >-
+      Inherits the parameters of the backing operation: Perspective (string),
+      SubType (string), ModifiedOnStartRange (date-time), ModifiedOnEndRange
+      (date-time), Skip (integer, default 0), Take (integer, default 100, max 1000).
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

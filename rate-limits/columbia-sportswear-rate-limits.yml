@@ -4,32 +4,66 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Columbia Sportswear
 providerId: columbia-sportswear
 created: '2026-05-04'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-05'
-reconciled: false
+modified: '2026-09-05'
+generated: '2026-09-05'
+method: probed
+source: >-
+  Live anonymous requests to https://api.columbia.com/ContentHubExternal on
+  2026-09-05, plus the Azure API Management policy endpoint and the developer
+  portal at https://columbia.developer.azure-api.net/.
+reconciled: true
 tags:
   - Rate Limiting
   - Retail
   - Apparel
-description: Columbia Sportswear does not publish a public API or rate-limit documentation. Any partner
-  data integration is governed by contract.
-sources:
-  - https://www.columbia.com/
-notes: No public rate-limit documentation; nothing to reconcile.
+limit_count: 0
+description: >-
+  Columbia Sportswear publishes no rate limits for its API surface, and none are
+  observable without an approved subscription key. No RateLimit-* or X-RateLimit-*
+  response header was returned on any anonymous call to the production gateway, no
+  Retry-After was seen, and the API Management rate-limit policy that governs the
+  product is not readable anonymously — the policy endpoint returns HTTP 401. An
+  honest zero: limits almost certainly exist inside the gateway policy, but
+  Columbia does not tell a consumer what they are.
+notes: >-
+  limit_count is 0 because nothing is published, not because nothing is enforced.
+  Previous rounds recorded a generated "Partner integration (undocumented)" limit
+  and a 429 response code that Columbia has never documented; both have been
+  replaced by what was actually observed.
+headers_observed: []
+headers_documented: []
 responseCodes:
-  throttled: 429
-limits:
-  - name: Partner integration (undocumented)
-    scope: contract
-    metric: varies
-    limit: see partner agreement
+  throttled: not documented
+  note: >-
+    Azure API Management returns 429 with Retry-After when a rate-limit policy
+    trips, but Columbia documents neither, and the behaviour could not be
+    confirmed anonymously. Recorded as not documented rather than assumed.
+limits: []
+evidence:
+  - url: https://api.columbia.com/ContentHubExternal/api/external/image/GetSeasonalAssets?MaterialNumber=1442362613
+    status: 401
+    finding: >-
+      Response headers were date, content-type, content-length, www-authenticate,
+      x-azure-ref, x-cache. No rate-limit header of any family.
+  - url: https://columbia.developer.azure-api.net/mapi/apis/4cad0e39673846b186038d3113e5a4ab/policies?api-version=2021-08-01
+    status: 401
+    finding: >-
+      The API Management policy document — which would carry any rate-limit or
+      quota policy — requires authentication and cannot be read by a prospective
+      consumer.
+  - url: https://columbia.developer.azure-api.net/
+    status: 200
+    finding: No rate-limit, quota or usage documentation anywhere on the portal.
 policies:
-  - name: Backoff
-    description: Use exponential backoff on 429/503 if any partner endpoint is exposed.
+  - name: Back off on 429 and 503
+    description: >-
+      Since no limit is published, throttle conservatively and use exponential
+      backoff. Treat the bulk endpoint (Take up to 1000) as the most likely to be
+      limited.
   - name: Contract-governed
-    description: Throughput is governed by the wholesale/partner contract, not a public tier.
+    description: >-
+      Any enforced throughput is set in the Azure API Management product policy and
+      in the partner agreement, neither of which Columbia publishes.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

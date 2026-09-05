@@ -1,0 +1,22 @@
+generated: '2026-09-05'
+method: derived
+source: openapi/columbia-sportswear-content-hub-external-openapi.json
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+  - query
+schemes:
+- name: apiKeyHeader
+  type: apiKey
+  in: header
+  parameter: Ocp-Apim-Subscription-Key
+  sources:
+  - openapi/columbia-sportswear-content-hub-external-openapi.json
+- name: apiKeyQuery
+  type: apiKey
+  in: query
+  parameter: subscription-key
+  sources:
+  - openapi/columbia-sportswear-content-hub-external-openapi.json

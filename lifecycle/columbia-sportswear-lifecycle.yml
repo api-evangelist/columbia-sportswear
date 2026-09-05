@@ -1,0 +1,89 @@
+generated: '2026-09-05'
+method: probed
+source: >-
+  https://columbia.developer.azure-api.net/mapi/products/contenthub-external/apis?api-version=2021-08-01
+  (specificationLastUpdated) and
+  https://columbia.developer.azure-api.net/mapi/apis/4cad0e39673846b186038d3113e5a4ab?api-version=2021-08-01
+  (apiRevision, isCurrent), plus searches for a status page, changelog and
+  deprecation policy that all missed.
+provider: Columbia Sportswear
+providerId: columbia-sportswear
+summary: >-
+  The one anonymously published API is current and was last respecified on
+  2026-07-30, but Columbia publishes no versioning policy, no deprecation policy,
+  no changelog, no SLA and no status page. Nothing in this record is a
+  Columbia-authored lifecycle commitment; the dates below are metadata the Azure
+  API Management instance exposes about itself.
+apis:
+  - name: Content Hub External API
+    api_revision: '1'
+    is_current: true
+    info_version: '1.0'
+    specification_last_updated: '2026-07-30'
+    version_set: null
+    deprecated_operations: []
+    note: >-
+      No apiVersionSets are configured on this API Management instance
+      (/mapi/apiVersionSets returns an empty list), so there is no
+      version-negotiation surface and no superseded revision to deprecate against.
+versioning_policy:
+  published: false
+  url: null
+  detail: >-
+    No versioning policy page exists on the developer portal or on columbia.com.
+    The contract carries no path, header or query version selector.
+deprecation_policy:
+  published: false
+  url: null
+  sunset_header: false
+  deprecation_header: false
+  rfc8594: false
+  detail: >-
+    No deprecation or sunset policy is published, and no RFC 8594 Sunset or
+    Deprecation response header was observed on any live probe. No Deprecation
+    pointer is emitted in apis.yml.
+status_page:
+  published: false
+  url: null
+  detail: >-
+    No status page exists. status.columbia.com does not resolve in DNS, and
+    neither the developer portal nor help.columbia.com links a status or uptime
+    surface. No StatusPage pointer is emitted in apis.yml.
+  evidence:
+    - probe: 'DNS A record for status.columbia.com'
+      result: NXDOMAIN
+    - url: https://status.columbia.com/
+      status: 000
+sla:
+  published: false
+  detail: >-
+    No service-level agreement is published. Availability terms, if any, sit
+    inside the partner agreement each subscriber signs before a subscription is
+    approved.
+changelog:
+  published: false
+  url: null
+  detail: >-
+    No dated changelog or release-notes surface exists for the API. The only
+    change signal available is the specificationLastUpdated timestamp above, which
+    the platform maintains, not Columbia.
+availability_observed:
+  - host: api.columbia.com
+    status: 401
+    note: Gateway live and answering; 401 is the correct unauthenticated response.
+    checked: '2026-09-05'
+  - host: columbia.developer.azure-api.net
+    status: 200
+    note: Developer portal live.
+    checked: '2026-09-05'
+  - host: columbia.portal.azure-api.net
+    status: 503
+    note: >-
+      The legacy Azure API Management developer-portal endpoint this catalog had
+      pointed at is retired and returns HTTP 503 Service Unavailable. It has been
+      superseded by columbia.developer.azure-api.net. The dead pointers were
+      removed from apis.yml in this pass.
+    checked: '2026-09-05'
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

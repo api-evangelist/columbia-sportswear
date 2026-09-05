@@ -1,0 +1,23 @@
+generated: '2026-09-05'
+method: generated
+source: openapi/columbia-sportswear-content-hub-external-openapi.json
+provider: Columbia Sportswear
+providerId: columbia-sportswear
+note: >-
+  Agent Skills packaged by API Evangelist from Columbia Sportswear's own published
+  OpenAPI. Columbia publishes no skills, no AGENTS.md and no agent-facing
+  documentation of its own. Every operationId referenced below is verified present
+  in the contract; none was invented.
+skills:
+  - name: columbia-sportswear-product-imagery-sync
+    file: columbia-sportswear-product-imagery-sync.md
+    api: Content Hub External API
+    description: >-
+      Retrieve Columbia product imagery for one material number, or run an
+      incremental bulk sync over a modified-on window, with the subscription-key
+      auth, Skip/Take paging cap and error semantics the contract and live gateway
+      actually specify.
+    operations:
+      - get-api-external-image-getseasonalassets-materialnumber-materialnumber
+      - get-api-external-image-getseasonalassetsbulk
+    read_only: true
