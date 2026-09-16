@@ -73,16 +73,17 @@ apis:
     type: Documentation
   - url: https://columbia.developer.azure-api.net/signup
     type: SignUp
-  description: Columbia Sportswear's partner-facing API platform, hosted on Microsoft Azure API Management.
-    The portal at columbia.developer.azure-api.net lists API products, offers a try-it console, and takes
-    subscription requests; the production gateway answers on Columbia's own domain at api.columbia.com.
-    Anonymously, the portal publishes one product - ContentHub External - and everything else requires
-    sign-in. Every subscription requires Columbia's approval before a key is issued. The legacy portal
-    endpoint at columbia.portal.azure-api.net has been retired and now returns HTTP 503; this record was
-    repointed at the live portal on 2026-09-05.
+  description: >-
+    Columbia Sportswear's partner-facing API platform, hosted on Microsoft Azure API Management. The portal
+    at columbia.developer.azure-api.net lists API products, offers a try-it console, and takes subscription
+    requests; the production gateway answers on Columbia's own domain at api.columbia.com. Anonymously,
+    the portal publishes one product - ContentHub External - and everything else requires sign-in. Every
+    subscription requires Columbia's approval before a key is issued. The legacy portal endpoint at columbia.portal.azure-api.net
+    has been retired and now returns HTTP 503; this record was repointed at the live portal on 2026-09-05.
   x-features:
   - Hosted on Microsoft Azure API Management
-  - Subscription-key authentication (Ocp-Apim-Subscription-Key header or subscription-key query parameter)
+  - >-
+    Subscription-key authentication (Ocp-Apim-Subscription-Key header or subscription-key query parameter)
   - Approval-gated subscriptions - no self-service key issuance
   - Try-it console and machine-readable OpenAPI export per API product
   - Production gateway on a first-party custom domain (api.columbia.com)
@@ -91,43 +92,22 @@ apis:
   - Browse the published API catalog and export its OpenAPI definition
   - Manage subscription keys for an approved partner integration
   baseURL: https://api.columbia.com/
-- aid: columbia-sportswear:content-hub-external
-  name: Content Hub External API
+- aid: columbia-sportswear:columbia-sportswear-externalimage-api
+  name: Columbia Sportswear External Image API
+  description: The ExternalImage API from Columbia Sportswear — 2 operation(s) for externalimage.
+  humanURL: https://columbia.developer.azure-api.net/
+  baseURL: https://api.columbia.com/
   tags:
-  - Digital Asset Management
-  - Product Imagery
-  - Retail
-  - Partner APIs
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://columbia.developer.azure-api.net/api-details#api=4cad0e39673846b186038d3113e5a4ab
-  baseURL: https://api.columbia.com/ContentHubExternal
-  description: 'Columbia Sportswear''s ContentHub image service for external customers. A read-only API
-    with two GET operations: look up product imagery ("seasonal assets") for a single 10-digit material
-    number, or page through assets in bulk over a modified-on date range with Skip/Take paging capped
-    at a Take of 1000. Both operations filter on perspective, shot subtype and a modified-on window. Unauthorized
-    callers are limited to Product Shot imagery older than a configured season. Authentication is an Azure
-    API Management subscription key on every call. The OpenAPI 3.0.1 contract in this repo was exported
-    from Columbia''s own API Management instance and declares servers[] https://api.columbia.com/ContentHubExternal
-    - Columbia''s own domain - confirming first-party ownership.'
-  x-features:
-  - OpenAPI 3.0.1 contract published by the provider and exportable from the portal
-  - Subscription-key authentication declared and applied in the contract
-  - Offset paging (Skip/Take) with a documented cap of 1000 on the bulk operation
-  - Modified-on date-range filtering for incremental sync
-  - Read-only - no write, cancel or delete surface
-  x-use-cases:
-  - Sync Columbia product imagery into a retail partner or marketplace catalog
-  - Incrementally pull assets changed since a stored high-water mark
-  - Resolve product photography for a Columbia material number
+  - ExternalImage
   properties:
-  - url: openapi/columbia-sportswear-content-hub-external-openapi.json
-    type: OpenAPI
-  - url: errors/columbia-sportswear-problem-types.yml
-    type: ErrorCatalog
-  - url: conformance/columbia-sportswear-conformance.yml
-    type: Conformance
-  - url: data-model/columbia-sportswear-data-model.yml
-    type: DataModel
+  - type: OpenAPI
+    url: openapi/columbia-sportswear-externalimage-api-openapi.yml
+  - type: ErrorCatalog
+    url: errors/columbia-sportswear-problem-types.yml
+  - type: Conformance
+    url: conformance/columbia-sportswear-conformance.yml
+  - type: DataModel
+    url: data-model/columbia-sportswear-data-model.yml
 common:
 - type: Website
   url: https://www.columbia.com/
