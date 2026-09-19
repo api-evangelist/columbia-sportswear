@@ -10,6 +10,18 @@ tags:
 - Footwear
 - Fortune 1000
 - Outdoor
+- Partner API
+- Product Imagery
+- Retail
+tags_raw:
+- Apparel
+- B2B
+- Consumer Management
+- Content Management
+- Digital Asset Management
+- Footwear
+- Fortune 1000
+- Outdoor
 - Partner APIs
 - Product Imagery
 - Retail
@@ -58,6 +70,11 @@ apis:
 - aid: columbia-sportswear:digital-developer-portal
   name: Columbia Sportswear Digital Developer Portal
   tags:
+  - Azure API Management
+  - Developer Portal
+  - Partner API
+  - Retail
+  tags_raw:
   - Azure API Management
   - Developer Portal
   - Partner APIs
