@@ -1,7 +1,9 @@
 ---
 title: 'Customer Story: Columbia'
 url: https://www.databricks.com/customers/columbia
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Columbia Sportswear" press release artificial intelligence'
 position: 4
 source: serpapi-google

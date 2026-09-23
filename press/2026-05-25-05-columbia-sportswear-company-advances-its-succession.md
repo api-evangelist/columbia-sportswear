@@ -1,7 +1,9 @@
 ---
 title: Columbia Sportswear Company Advances Its Succession ...
 url: https://via.tt.se/pressmeddelande/4139504/columbia-sportswear-company-advances-its-succession-plans-and-appoints-co-presidents-peter-j-bragdon-and-joseph-p-boyle?publisherId=259167&lang=en
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Columbia Sportswear" press release artificial intelligence'
 position: 5
 source: serpapi-google

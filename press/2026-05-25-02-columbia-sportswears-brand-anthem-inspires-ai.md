@@ -1,7 +1,9 @@
 ---
 title: Columbia Sportswear's brand anthem inspires AI ...
 url: https://www.linkedin.com/posts/greg-balkin_genai-feels-a-bit-overwhelming-and-its-activity-7374904393676050432-kbEt
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Columbia Sportswear" press release artificial intelligence'
 position: 2
 source: serpapi-google

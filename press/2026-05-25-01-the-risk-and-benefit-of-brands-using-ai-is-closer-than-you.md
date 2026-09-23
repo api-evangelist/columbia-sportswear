@@ -1,7 +1,9 @@
 ---
 title: The risk and benefit of brands using AI is closer than you ...
 url: https://www.prdaily.com/the-daily-scoop-the-risk-and-benefit-of-brands-using-ai-is-closer-than-you-think/
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Columbia Sportswear" press release artificial intelligence'
 position: 1
 source: serpapi-google
