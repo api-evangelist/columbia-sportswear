@@ -128,6 +128,8 @@ apis:
   - type: DataModel
     url: data-model/columbia-sportswear-data-model.yml
 common:
+- type: FinOps
+  url: finops/columbia-sportswear-finops.yml
 - type: Website
   url: https://www.columbia.com/
 - type: Corporate
