@@ -66,3 +66,16 @@ evidence:
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - metered
+  units: []
+  plans:
+  - name: ContentHub External
+    access: partner
+    model: metered
+    model_how: derived
+    units: []
+    periods: []
