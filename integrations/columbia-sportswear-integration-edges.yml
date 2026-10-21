@@ -1,0 +1,36 @@
+edges:
+- partner_name: Cascale (Sustainable Apparel Coalition)
+  partner: null
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://cascale.org/our-members/
+  category: apparel sustainability coalition membership
+  contract_reference:
+    register: Cascale members (cascale.org/our-members/, formerly Sustainable Apparel Coalition)
+    standard: Higg Index (Cascale)
+    spec_file: null
+    role: cascale-member
+    registered_name: Columbia Sportswear Co.
+    register_id: 1860
+    register_location: Portland, Oregon, United States
+    partner_tier: Brands & Retailers
+    matched_domain: columbia.com
+    matched_by: domain
+    signal_note: 'participation only: coalition membership; member type is context, never counted'
+    detected_by: sweep-fashion-apparel.py
+    detected: '2026-10-20'
+  detected_by: sweep-fashion-apparel.py
+  first_seen: '2026-10-20'
+generated: '2026-10-20'
+method: searched
+source:
+- https://services.oeko-tex.com/buying-guide/
+- https://cascale.org/our-members/
+- https://www.centricsoftware.com/partners/
+checked:
+- https://cascale.org/our-members/
+- https://services.oeko-tex.com/buying-guide/
+- https://www.centricsoftware.com/partners/
