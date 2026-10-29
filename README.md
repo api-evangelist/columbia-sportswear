@@ -1,4 +1,4 @@
-# Columbia Sportswear (columbia-sportswear)
+# Columbia Sportswear
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,109 +64,135 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Columbia Sportswear is a global designer, marketer, and distributor of outdoor, active, and everyday lifestyle apparel, footwear, accessories, and equipment under the Columbia, Mountain Hardwear, SOREL, and prAna brands. Columbia Sportswear Digital runs a partner-facing API estate on Microsoft Azure API Management: a developer portal at columbia.developer.azure-api.net and a production gateway on Columbia's own domain at api.columbia.com. Exactly one API product is documented anonymously — ContentHub External, a read-only product-imagery service with a published OpenAPI 3.0.1 contract — and every other product on the portal requires sign-in. Access is a partner arrangement rather than a developer program: subscriptions require Columbia's approval, portal terms restrict use to Columbia employees and to vendors serving Columbia under agreement, and no price, rate limit, SLA or status page is published. The company also exchanges traditional EDI documents (POs, ASNs, invoices) with retail trading partners through providers like TrueCommerce and eZCom.
+Columbia Sportswear is a global designer, marketer, and distributor of outdoor, active, and everyday lifestyle apparel, footwear, accessories, and equipment under the Columbia, Mountain Hardwear, SOREL, and prAna brands. Columbia Sportswear Digital runs a partner-facing API estate on Microsoft Azure API Management: a developer portal at columbia.developer.azure-api.net and a production gateway on Columbia's own domain at api.columbia.com. Exactly one API product is documented anonymously - ContentHub External, a read-only product-imagery service with a published OpenAPI 3.0.1 contract - and every other product on the portal requires sign-in. Access is a partner arrangement rather than a developer program: subscriptions require Columbia's approval, portal terms restrict use to Columbia employees and to vendors serving Columbia under agreement, and no price, rate limit, SLA or status page is published. The company also exchanges traditional EDI documents (POs, ASNs, invoices) with retail trading partners through providers like TrueCommerce and eZCom.
 
-**URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/columbia-sportswear/refs/heads/main/apis.yml)
+**Areas:** Apparel · B2B · Consumer Management · Content Management · Digital Asset Management · Footwear · Fortune 1000 · Outdoor · Partner API · Product Imagery · Retail · Fashion
 
-## Scope
+## Columbia Sportswear on APIs.io
 
-- **Type:** Index
-- **Position:** Consuming
-- **Access:** 3rd-Party
+Everything profiled for Columbia Sportswear is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/columbia-sportswear/](https://apis.io/providers/columbia-sportswear/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (2)
 
-- Apparel
-- B2B
-- Consumer Management
-- Content Management
-- Digital Asset Management
-- Footwear
-- Fortune 1000
-- Outdoor
-- Partner APIs
-- Product Imagery
-- Retail
+- [Columbia Sportswear Digital Developer Portal](https://apis.io/apis/columbia-sportswear/digital-developer-portal/) — Columbia Sportswear's partner-facing API platform, hosted on Microsoft Azure API Management. The portal at columbia.developer.azure-api.net lists API…
+- [Columbia Sportswear External Image API](https://apis.io/apis/columbia-sportswear/columbia-sportswear-externalimage-api/) — The ExternalImage API from Columbia Sportswear — 2 operation(s) for externalimage.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2025-03-23
-- **Modified:** 2026-09-05
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### MCP servers (1)
 
-### Columbia Sportswear Digital Developer Portal
+Model Context Protocol servers that expose the API to agents.
 
-Columbia Sportswear's partner-facing API platform, hosted on Microsoft Azure API Management. The portal at columbia.developer.azure-api.net lists API products, offers a try-it console, and takes subscription requests; the production gateway answers on Columbia's own domain at api.columbia.com. Anonymously, the portal publishes one product — ContentHub External — and everything else requires sign-in. Every subscription requires Columbia's approval before a key is issued. The legacy portal endpoint at columbia.portal.azure-api.net has been retired and now returns HTTP 503; this record was repointed at the live portal on 2026-09-05.
+- [columbia-sportswear-mcp.yml](https://apis.io/servers/columbia-sportswear/columbia-sportswear-mcp-yml/)
 
-**Human URL:** [https://columbia.developer.azure-api.net/](https://columbia.developer.azure-api.net/)
-**Base URL:** `https://api.columbia.com/`
+#### JSON-LD (1)
 
-#### Properties
+Linked-data contexts for the provider's vocabulary.
 
-- [Developer Portal](https://columbia.developer.azure-api.net/)
-- [API Reference](https://columbia.developer.azure-api.net/apis)
-- [Documentation](https://columbia.developer.azure-api.net/products)
-- [Sign Up](https://columbia.developer.azure-api.net/signup)
+- [Columbia Sportswear Context](https://apis.io/jsonld/columbia-sportswear/columbia-sportswear-context/)
 
-### Content Hub External API
+#### Vocabulary (1)
 
-Columbia Sportswear's ContentHub image service for external customers. A read-only API with two GET operations: look up product imagery ("seasonal assets") for a single 10-digit material number, or page through assets in bulk over a modified-on date range with Skip/Take paging capped at a Take of 1000. Authentication is an Azure API Management subscription key on every call. The OpenAPI 3.0.1 contract in this repository was exported from Columbia's own API Management instance and declares `servers[]` `https://api.columbia.com/ContentHubExternal` — Columbia's own domain.
+The provider's domain terms, defined.
 
-**Human URL:** [Portal API detail](https://columbia.developer.azure-api.net/api-details#api=4cad0e39673846b186038d3113e5a4ab)
-**Base URL:** `https://api.columbia.com/ContentHubExternal`
+- [Columbia Sportswear API Vocabulary](https://apis.io/vocabularies/columbia-sportswear/columbia-sportswear-vocabulary/)
 
-#### Properties
+#### Overlays (1)
 
-- [OpenAPI](openapi/columbia-sportswear-content-hub-external-openapi.json) — [OpenAPI specification](https://spec.openapis.org/oas/latest.html)
-- [Error Catalog](errors/columbia-sportswear-problem-types.yml)
-- [Conformance](conformance/columbia-sportswear-conformance.yml)
-- [Data Model](data-model/columbia-sportswear-data-model.yml)
+OpenAPI overlays, including conversational phrasing for each operation.
 
-## Artifacts in this repository
+- [Columbia Sportswear Content Hub External Overlay](https://apis.io/overlays/columbia-sportswear/columbia-sportswear-content-hub-external-overlay/)
 
-| Artifact | File | Method |
-|---|---|---|
-| OpenAPI (harvested, verbatim) | `openapi/_original/columbia-sportswear-content-hub-external-openapi.json` | harvested |
-| OpenAPI (registered) | `openapi/columbia-sportswear-content-hub-external-openapi.json` | harvested |
-| OpenAPI Overlay | `overlays/columbia-sportswear-content-hub-external-overlay.yaml` | generated |
-| Authentication | `authentication/columbia-sportswear-authentication.yml` | derived |
-| Conventions (idempotency + reversibility) | `conventions/columbia-sportswear-conventions.yml` | derived |
-| Error catalog | `errors/columbia-sportswear-problem-types.yml` | derived |
-| Conformance | `conformance/columbia-sportswear-conformance.yml` | derived |
-| Data model | `data-model/columbia-sportswear-data-model.yml` | derived |
-| Lifecycle | `lifecycle/columbia-sportswear-lifecycle.yml` | probed |
-| Plans / pricing | `plans/columbia-sportswear-plans-pricing.yml` | probed |
-| Rate limits | `rate-limits/columbia-sportswear-rate-limits.yml` | probed |
-| Domain security | `security/columbia-sportswear-domain-security.yml` | probed |
-| Well-known probe (all 404 — a recorded absence) | `well-known/columbia-sportswear-well-known.yml` | probed |
-| Packages / SDKs | `packages/columbia-sportswear-packages.yml` | searched |
-| MCP (candidate — no server exists) | `mcp/columbia-sportswear-mcp.yml` | derived |
-| Agent Skill | `skills/columbia-sportswear-product-imagery-sync.md` | generated |
-| llms.txt | `llms/columbia-sportswear-llms.txt` | generated |
-| Vocabulary | `vocabulary/columbia-sportswear-vocabulary.yml` | generated |
+#### Security (2)
 
-**Not published by Columbia Sportswear**, each probed and recorded as absent rather than assumed: client SDK, CLI, MCP server, A2A agent card, AsyncAPI or webhook catalog, status page, changelog, deprecation policy, published rate limits, sandbox, `security.txt`, trust centre, and any `/.well-known/` discovery document on any host.
+Authentication, trust centre, and vulnerability disclosure.
 
-## Common Properties
+- [Columbia Sportswear Authentication](https://apis.io/security/columbia-sportswear/columbia-sportswear-authentication/)
+- [Columbia Sportswear Domain Security](https://apis.io/security/columbia-sportswear/columbia-sportswear-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Columbia Sportswear Plans Pricing](https://apis.io/plans/columbia-sportswear/columbia-sportswear-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Columbia Sportswear Rate Limits](https://apis.io/rate-limits/columbia-sportswear/columbia-sportswear-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Columbia Sportswear Finops](https://apis.io/finops/columbia-sportswear/columbia-sportswear-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://www.columbia.com/)
-- [Corporate](https://www.columbiasportswear.com/)
-- [Developer Portal](https://columbia.developer.azure-api.net/)
-- [API Reference](https://columbia.developer.azure-api.net/apis)
-- [Sign Up](https://columbia.developer.azure-api.net/signup)
+- [API reference](https://columbia.developer.azure-api.net/apis)
+- [Sign up](https://columbia.developer.azure-api.net/signup)
 - [Support](https://help.columbia.com/s/)
-- [GitHub Organization](https://github.com/columbiasportswear)
-- [LinkedIn](https://www.linkedin.com/company/columbia-sportswear)
-- [Privacy Policy](https://www.columbia.com/t/legal/privacy-policy/)
-- [Terms of Use](https://www.columbia.com/t/legal/terms-of-use/)
-- [Investor Relations](https://investor.columbia.com/)
-- [Mountain Hardwear](https://www.mountainhardwear.com/)
-- [SOREL](https://www.sorel.com/)
-- [prAna](https://www.prana.com/)
+- [Terms of service](https://www.columbia.com/t/legal/terms-of-use/)
+- [Privacy policy](https://www.columbia.com/t/legal/privacy-policy/)
+- [GitHub](https://github.com/columbiasportswear)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
+**Kin Score 44.0** — developing · rubric 0.25.0 · scored 2026-10-23
 
-**Email:** kin@apievangelist.com
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 53.8 |
+| Contract governance | 18.2 |
+| Operational transparency | 2.6 |
+| Developer ergonomics | 44.6 |
+| Access clarity | 55.3 |
+
+**Agent readiness 30.3** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | na |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | na |
+| Error Semantics | derived (partial credit) |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | na |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 24.5** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/columbia-sportswear/](https://apis.io/providers/columbia-sportswear/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Columbia Sportswear: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/columbia-sportswear/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
