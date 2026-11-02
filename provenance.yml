@@ -23,6 +23,9 @@ artifacts:
   front-door-ai/2026-09-17.yml:
     method: unknown
     evidence: no authorship recorded
+  heartbeat/2026-11-02.yml:
+    method: unknown
+    evidence: no authorship recorded
   integrations/_index.yml:
     method: generated
     evidence: carries an API Evangelist house phrase
@@ -35,7 +38,7 @@ artifacts:
   kin/checks-2026-10-23T222754.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
-  kin/checks-2026-10-31T095417.yml:
+  kin/checks-2026-11-02T082323.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
   kin/score-2026-09-23T000603.yml:
@@ -92,6 +95,15 @@ artifacts:
   kin/score-2026-10-31T095417.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-11-01T171331.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-11-01T200237.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-11-02T082323.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
   lifecycle/columbia-sportswear-lifecycle.yml:
     method: unknown
     evidence: no authorship recorded
@@ -118,6 +130,9 @@ artifacts:
   packages/columbia-sportswear-packages.yml:
     method: searched
     evidence: declared in the artifact
+  patterns/columbia-sportswear-patterns.yml:
+    method: derived
+    evidence: declared in the artifact
   plans/columbia-sportswear-plans-pricing.yml:
     method: unknown
     evidence: no authorship recorded
@@ -139,6 +154,9 @@ artifacts:
   rate-limits/columbia-sportswear-rate-limits.yml:
     method: unknown
     evidence: no authorship recorded
+  rules/columbia-sportswear-rules.yml:
+    method: generated
+    evidence: declared in the artifact
   search/2026-05-25-01-as-ai-increases-at-columbia-sportswear-so-does-the-threat.md:
     method: unknown
     evidence: no authorship recorded
@@ -161,6 +179,9 @@ artifacts:
     method: generated
     evidence: declared in the artifact
   skills/columbia-sportswear-product-imagery-sync.md:
+    method: generated
+    evidence: declared in the artifact
+  sla/columbia-sportswear-sla.yml:
     method: generated
     evidence: declared in the artifact
   vocabulary/columbia-sportswear-vocabulary.yml:
